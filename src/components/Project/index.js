@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import axios from 'axios'
 
 const Project = () => {
   const [markdown, setMarkdown] = useState('')
   const [project, setProject] = useState('')
+  const { username, project_id } = useParams()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getMarkdown() {
       let project = localStorage.getItem('project')
+      const search = localStorage.getItem('search')
+      if (search !== username) return navigate('/')
+
       if (project) {
         project = JSON.parse(project)
+        if (Number(project.id) !== Number(project_id)) return navigate('/')
         setProject(project)
       }
       const { data } = await axios.get(`${project.url}/contents`)

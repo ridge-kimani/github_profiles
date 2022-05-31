@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
   const [search, setSearch] = useState('')
   const [image, setImage] = useState('')
+  const { username } = useParams()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     // storing input name
     let projects = localStorage.getItem('projects')
     const search = localStorage.getItem('search')
+
+    console.log({ username, search })
+    if (search !== username) navigate('/')
+
     setSearch(search)
 
     if (projects && projects.length) {
@@ -18,8 +25,6 @@ export default function Projects() {
       setImage(projects[0].owner.avatar_url)
     }
   }, [])
-
-  const navigate = useNavigate()
 
   const navigateToProject = (id) => {
     const project = projects.filter((val) => val.id === id)[0]
