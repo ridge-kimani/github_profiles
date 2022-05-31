@@ -19,8 +19,10 @@ const Project = () => {
         const readMe = data.filter(
           (val) => val.name.toLowerCase() === 'readme.md'
         )[0]
-        const markdown = await axios.get(readMe.download_url)
-        setMarkdown(markdown.data)
+        if (readMe) {
+          const markdown = await axios.get(readMe.download_url)
+          setMarkdown(markdown.data)
+        }
       }
     }
     getMarkdown().then((res) => console.log('success', res))
