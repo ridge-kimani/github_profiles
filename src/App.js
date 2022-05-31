@@ -1,9 +1,7 @@
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-    Routes
-} from 'react-router-dom';
+import React from 'react'
+
+import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Search from './components/Search'
 import Project from './components/Project'
 import Projects from './components/Projects'
@@ -19,7 +17,7 @@ function App() {
         </Routes>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

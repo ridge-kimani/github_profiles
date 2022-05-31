@@ -13,8 +13,9 @@ const initialState = {
 
 export const searchProfile = createAsyncThunk(
   'searchProfile',
-  async (search) => {
+  async (arg, { getState }) => {
     try {
+      const { search } = getState()
       const { data } = await axios.get(`${baseURL}/${search}/repos`)
       return data
     } catch (e) {
