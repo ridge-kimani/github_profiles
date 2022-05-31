@@ -14,7 +14,6 @@ export default function Projects() {
     let projects = localStorage.getItem('projects')
     const search = localStorage.getItem('search')
 
-    console.log({ username, search })
     if (search !== username) navigate('/')
 
     setSearch(search)
