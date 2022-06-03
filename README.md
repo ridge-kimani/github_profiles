@@ -10,3 +10,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ### Live URL
 
 [http://github-profiles-nu.vercel.app](URL)
+
+[https://github-profiles-b79e1.web.app](URL)
